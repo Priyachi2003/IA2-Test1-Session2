@@ -1,0 +1,79 @@
+ 
+ gcc -g p1final.c
+ ./a.out
+enter the values of base and height
+1
+2
+area of triangle of base 1.00 and height 2.00 is 1.00 
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x81a: file p1final.c, line 16.
+(gdb) r
+Starting program: /home/runner/IA2-Test1-Session2-3/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p1final.c:16
+16  {
+(gdb) n
+18    input(&base, &height);
+(gdb) s
+input (base=0x7ffe783355cc, height=0x7ffe783355d0) at p1final.c:4
+4     printf("enter the values of base and height\n");
+(gdb) n
+enter the values of base and height
+5     scanf("%f%f",base,height);
+(gdb) n
+1
+2
+6   }
+(gdb) n
+main () at p1final.c:19
+19    find_area(base,height,&area);
+(gdb) p base
+$1 = 1
+(gdb) p height
+$2 = 2
+(gdb) s
+find_area (base=1, height=2, area=0x7ffe783355d4) at p1final.c:9
+9     *area=base*height/2;
+(gdb) n
+10  }
+(gdb) n
+main () at p1final.c:20
+20    output(base,height,area);
+(gdb) p area
+$3 = 1
+(gdb) s
+output (base=1, height=2, area=1) at p1final.c:13
+13    printf("area of triangle of base %.2f and height %.2f is %.2f",base,height,area);
+(gdb) n
+14  }
+(gdb) n
+main () at p1final.c:21
+21    return 0;
+(gdb) n
+22  }
+(gdb) n
+__libc_start_main (main=0x55d905200812 <main>, argc=1, argv=0x7ffe783356c8, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7ffe783356b8) at ../csu/libc-start.c:344
+344 ../csu/libc-start.c: No such file or directory.
+(gdb) c
+Continuing.
+area of triangle of base 1.00 and height 2.00 is 1.00[Inferior 1 (process 234) exited normally]
+(gdb) 
