@@ -17,7 +17,7 @@ void input_array(int n,int *a)
 }
 int is_composite(int n)
 {
-  is_composite=1;
+   is_composite=1;
   
 }
 int sum_composite_numbers(int n,int a[n])
